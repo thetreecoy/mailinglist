@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Valdeandez Group - Join the Secret</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ensures smooth aesthetic changes and defines custom styles */
+        body {
+            font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: #F8FAFC; /* Light gray background */
+        }
+        .card {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .mystery-badge {
+            background-image: linear-gradient(135deg, #FF6F61 0%, #F59E0B 100%); /* Holiday Red/Gold Gradient */
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 700;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
+        }
+        .cta-button {
+            /* Trustworthy Indigo Blue */
+            background-color: #4F46E5; 
+            transition: background-color 0.2s ease;
+        }
+        .cta-button:hover {
+            background-color: #3730A3; /* Darker blue on hover */
+        }
+        .image-placeholder {
+            min-height: 150px; /* Gives visual weight */
+            background-color: #E0E7FF; /* Light blue placeholder */
+            border: 2px solid #6366F1; /* Indigo border */
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4F46E5;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main Content Card -->
+    <div id="landing-card" class="card max-w-lg w-full mx-auto rounded-2xl p-6 sm:p-10 text-center shadow-2xl">
+
+        <div class="mystery-badge inline-block mb-8">
+            THE VALDEANDEZ GROUP
+        </div>
+        
+        <!-- Image Placeholder (Professional, Clean) -->
+        <div class="image-placeholder mb-8">
+            [High-Fidelity Product/Blueprint Image Here]
+        </div>
+
+        <!-- Dynamic Headline and Subtitle Area -->
+        <h1 id="dynamic-headline" class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3 tracking-tight leading-snug">
+            <!-- Headline will be inserted by JavaScript -->
+        </h1>
+        <p id="dynamic-subtitle" class="text-lg text-gray-600 mb-8 sm:px-4">
+            <!-- Subtitle will be inserted by JavaScript -->
+        </p>
+
+        <!-- Email Capture Form -->
+        <form id="email-form" class="space-y-4" 
+              action="https://script.google.com/macros/s/AKfycbzXlck179-JbE2HmWl7qf0fyESQtkfZwSYBdA1y9qRbrLQIyaOZUgQry6QWJPh1sEvk/exec" 
+              method="POST"
+              target="iframe-submit">
+            
+            <!-- HIDDEN FIELD TO CAPTURE HEADLINE FOR DATA ANALYTICS -->
+            <input type="hidden" id="headline-saw" name="headline_saw" value="">
+
+            <!-- CRUCIAL: Name must match the Google Sheet column header -->
+            <input type="email" name="email" placeholder="Enter your email to unlock the secret..." 
+                   class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-4 focus:ring-indigo-200 focus:border-indigo-400 text-gray-800" 
+                   required>
+            
+            <button type="submit" class="cta-button w-full text-white font-bold py-3 px-6 rounded-lg shadow-xl uppercase text-lg hover:shadow-2xl transition duration-300 ease-in-out">
+                Unlock the Secret: Join the Email List
+            </button>
+            <p class="text-sm text-gray-400 pt-2">Join over 15 growing members who are in on the secret.</p>
+        </form>
+
+        <!-- Placeholder for success message -->
+        <div id="success-message" class="hidden mt-6 p-4 rounded-lg bg-green-100 text-green-700 font-medium">
+            Success! Your email has been added to The Valdeandez Group! Prepare for the July 2026 reveal!
+        </div>
+    </div>
+    
+    <!-- Hidden iframe for submission workaround -->
+    <iframe id="iframe-submit" name="iframe-submit" style="display:none;"></iframe>
+
+    <script>
+        // --- 1. Define the Decoy Variants (10 total) ---
+        const allVariants = [
+            // Variant 1: Ethical Hook (Refined for Poconos Pitch)
+            {
+                headline: "We're putting KIDS back in the factories! Find out HOW!",
+                subtitle: "The future of American Manufacturing—Starting RIGHT HERE in the Pocono Mountains! Find out HOW!"
+            },
+            // Variant 2: The Scandal (Smooch Breaks)
+            {
+                headline: "My husband was taking SMOOCH BREAKS at work!! 😫",
+                subtitle: "Get the info sent straight to your inbox and see what I heard from his employer!"
+            },
+            // Variant 3: The Financial Shock (Factory Build - Half a Million)
+            {
+                headline: "My husband spent HALF A MILLION DOLLARS on this",
+                subtitle: "See the shocking expense my husband SERIOUSLY took on!"
+            },
+            // Variant 4: The Christmas Discovery (Timely)
+            {
+                headline: "Wanna find out what I found IN MY LIVING ROOM!? ON CHRISTMAS??",
+                subtitle: "See the LIVING ROOM CAMERA FOOTAGE I used to discover the secret!"
+            },
+            // Variant 5: The Manufacturing Meta 
+            {
+                headline: "The kids yearn for the mines- and now the FACTORIES!",
+                subtitle: "Find out what these 5 families have to say about it!"
+            },
+            // Variant 6: The Holiday Horror 
+            {
+                headline: "He took 'Secret Santa' to a whole new level",
+                subtitle: "I don't know if I can look at another Christmas tree the same way ever again."
+            },
+            // Variant 7: The Tax Loophole 
+            {
+                headline: "SAVE $150- FOR REAL",
+                subtitle: "Sign up for our mailing list RIGHT NOW for the deal of a lifetime! LIMITED OPPORTUNITY."
+            },
+            // Variant 8: The Parenting Drama 
+            {
+                headline: "THE WHEN: COMING 2027.",
+                subtitle: "No joke, no fluff. Join the mailing list to find out the WHAT."
+            },
+            // Variant 9: The Labor Solution 
+            {
+                headline: "POCONO PEOPLE! What are you looking for in your place of work?",
+                subtitle: "WE CARE! Join the mailing list and fill out a simple questionaire for a chance to WIN BIG"
+            },
+            // Variant 10: The Relatable Reality 
+            {
+                headline: "I'm a stay-at-home-mom- that's why I can't believe my husband HID THIS FROM ME",
+                subtitle: "Join the email list to see the real footage when I release it."
+            }
+        ];
+
+
+        // --- 2. Randomly Select, Display, and Load Hidden Field ---
+        function loadDynamicContent() {
+            const randomIndex = Math.floor(Math.random() * allVariants.length);
+            const selectedVariant = allVariants[randomIndex];
+
+            // Display content
+            document.getElementById('dynamic-headline').innerText = selectedVariant.headline;
+            document.getElementById('dynamic-subtitle').innerText = selectedVariant.subtitle;
+            
+            // Populate the hidden field (CRUCIAL for data capture)
+            document.getElementById('headline-saw').value = selectedVariant.headline;
+        }
+
+        // --- 3. Handle Form Submission Success/Failure via Iframe Listener (FIX) ---
+        document.getElementById('email-form').addEventListener('submit', function(e) {
+            const statusDisplay = document.getElementById('success-message');
+            const form = e.target;
+            
+            // Show processing message
+            statusDisplay.classList.remove('hidden'); 
+            statusDisplay.classList.remove('bg-red-100', 'text-red-700');
+            statusDisplay.classList.add('bg-green-100', 'text-green-700');
+            statusDisplay.innerText = "Processing submission...";
+
+            // The iframe handles the actual submission. We listen for it to load.
+            document.getElementById('iframe-submit').onload = function() {
+                // If the iframe loads, the data was successfully received by the Google Script.
+                
+                // Hide the form and show the final success message
+                form.classList.add('hidden');
+                statusDisplay.innerText = "Success! Your email has been added to The Valdeandez Group! Prepare for the July 2026 reveal!";
+            };
+            
+            // 5 second timeout for submission handling—a safety net for network issues
+            setTimeout(() => {
+                // If the form hasn't been hidden yet, assume submission failed or timed out
+                if (form.classList.contains('hidden')) return; 
+                
+                statusDisplay.classList.remove('bg-green-100', 'text-green-700');
+                statusDisplay.classList.add('bg-red-100', 'text-red-700');
+                statusDisplay.innerText = "Error: Submission timed out or failed. Please check your network and try again. [Error 001]";
+            }, 5000); 
+        });
+
+        // Load content on page load
+        window.onload = loadDynamicContent;
+    </script>
+</body>
+</html>
